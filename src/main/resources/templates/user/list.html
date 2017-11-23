@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>userList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+    <link type="stylesheet"  th:href="@{/css/bootstrap-theme.min.css}"/>
+    <script type="text/javascript" th:src="@{/css/jquery-2.1.1.min.js}"></script>
+    <script type="text/javascript" th:src="@{/css/bootstrap.min.js}"></script>
+
+
+</head>
+<body class="container">
+<br/>
+<h1>销货</h1>
+<br/><br/>
+
+<form th:action="@{/list1}" th:object="${sale}" th:method="get">
+    <div class="form-group">
+       <!-- <label class="col-sm-2 control-label" >name</label>-->
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="name" placeholder="单号、客户名称" th:field="*{custom}"/>
+        </div>
+
+        <div class="col-sm-4">
+            <button class="btn btn-default" type="submit" placeholder="查询">查询</button>
+        </div>
+    </div>
+</form>
+
+<div class="with:80%">
+
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>单号</th>
+            <th>客户</th>
+            <th>销售日期</th>
+            <th>销售总额</th>
+            <th>登记情况</th>
+            <th>状态</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="sale : ${datas}">
+            <th scope="row" th:text="${sale.id}">1</th>
+            <td th:text="${sale.info}">neo</td>
+            <td th:text="${sale.custom}">neo</td>
+            <td th:text="${sale.saledate}">neo</td>
+            <td th:text="${sale.money}">neo</td>
+            <td th:switch="${sale.dengji}">
+                <p th:case="2">未登记</p>
+                <p th:case="1">已登记</p>
+            </td>
+            <td th:text="${sale.shenhe}">neo</td>
+           <!-- <td><a th:href="@{/toEdit(id=${sale.id})}">edit</a></td>
+            <td><a th:href="@{/delete(id=${sale.id})}">delete</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+ <!--   <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>-->
+    <div th:include="user/page::pager" th:remove="tag"></div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
+    </div>
+</div>
+
+</body>
+<script>
+   /* $(function(){
+        $.ajax({
+            type:"post",
+            url:"http://localhost:8080/test",
+            success:function(msg){
+               // alert(msg)
+            },
+            error:function(){
+            }
+        })
+    })
+*/
+</script>
+</html>

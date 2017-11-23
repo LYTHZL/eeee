@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>user</title>
+    <link rel="stylesheet" th:href="@{/css/jquery.min.js}"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+
+
+</head>
+<body class="container">
+<script>
+
+            $(".form_datetime").datetimepicker({
+                format: "dd MM yyyy - hh:ii"
+            });
+
+</script>
+<br/>
+<h1>新增销售单</h1>
+<br/><br/>
+
+
+<div style="width: 200px">
+
+<form class="form-horizontal"   th:action="@{/add}"  method="post">
+
+    <div  class="form-group">
+        <label for="y">用户名</label>
+        <input type="text" id="y" name="custom" class="form-control" placeholder="客户名称" />
+        <!--<label for="custom">客户</label>
+        <select  name="custom" id="custom" class="form-control">
+            <option value="">请选择</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>-->
+    </div>
+
+
+
+    <div  class="form-group">
+        <label for="saledate">销售日期</label>
+        <input class="form-control" name="saledate"  onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',proTime:'2008-03-08 11:30:00'})"  id="saledate" placeholder="日期" />
+    </div>
+    <div class="form-group">
+        <label for="yujimoney">预计收款金额</label>
+        <input type="text" id="yujimoney" name="saleman" class="form-control" placeholder="价格" />
+    </div>
+
+    <div class="form-group">
+        <label for="moneydate">预计收款日期</label>
+        <input class="form-control" name="moneydate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',proTime:'2008-03-08 11:30:00'})"  id="moneydate" placeholder="日期" />
+    </div>
+
+    <div class="form-group">
+        <label for="yubei">发货方式</label>
+        <input type="text" class="form-control"  name="info"  id="yubei" placeholder=""/>
+    </div>
+
+    <div class="form-group">
+        <label for="trandate">预计发货日期</label>
+        <input class="form-control" name="trandate" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',proTime:'2008-03-08 11:30:00'})"  id="trandate" placeholder="日期" />
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <input type="submit" value="Submit" class="btn btn-info" />
+            &nbsp; &nbsp; &nbsp;
+            <input type="reset" value="Reset" class="btn btn-info" />
+        </div>
+
+    </div>
+</form>
+</div>
+</body>
+</html>
+
